@@ -18,7 +18,9 @@ public enum SuccessCode {
     /**
      * 201 CREATED
      */
-    LOGIN_SUCCESS(HttpStatus.OK, "로그인에 성공했습니다.")
+    LOGIN_SUCCESS(HttpStatus.OK, "로그인에 성공했습니다."),
+    SIGNUP_SUCCESS(HttpStatus.CREATED, "회원가입이 완료됐습니다."),
+    SIGNOUT_SUCCESS(HttpStatus.CREATED, "로그아웃이 완료됐습니다.")
     ;
 
 
