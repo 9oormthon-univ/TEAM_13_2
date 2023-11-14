@@ -18,7 +18,7 @@ public class CreateHouseRequestDto {
     private Long icingId;
 
     @NotEmpty
-    private List<Long> cookieId;
+    private List<Long> cookieIds;
 
     @NotBlank
     private String houseName;

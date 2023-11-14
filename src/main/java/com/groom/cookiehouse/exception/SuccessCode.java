@@ -20,7 +20,8 @@ public enum SuccessCode {
      */
     LOGIN_SUCCESS(HttpStatus.OK, "로그인에 성공했습니다."),
     SIGNUP_SUCCESS(HttpStatus.CREATED, "회원가입이 완료됐습니다."),
-    SIGNOUT_SUCCESS(HttpStatus.CREATED, "로그아웃이 완료됐습니다.")
+    SIGNOUT_SUCCESS(HttpStatus.CREATED, "로그아웃이 완료됐습니다."),
+    HOUSE_CREATED_SUCCESS(HttpStatus.CREATED, "집이 완성되었습니다")
     ;
 
 

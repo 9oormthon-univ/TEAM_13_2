@@ -27,8 +27,8 @@ public class IcingSelection extends BaseEntity {
     private User user;
 
     @Builder
-    public IcingSelection(Icing cookie, User user) {
-        this.icing = cookie;
+    public IcingSelection(Icing icing, User user) {
+        this.icing = icing;
         this.user = user;
     }
 }

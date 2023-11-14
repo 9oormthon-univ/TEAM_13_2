@@ -31,11 +31,18 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
 
+    @Column(nullable = true)
+    private String houseName;
+
     @Builder
     public User(String userName, String socialId, SocialType socialType) {
         this.userName = userName;
         this.socialId = socialId;
         this.socialType = socialType;
+    }
+
+    public void updateHouseName(String houseName) {
+        this.houseName = houseName;
     }
 
     public void updateRefreshToken(String refreshToken) {
