@@ -1,9 +1,9 @@
 package com.groom.cookiehouse.service.auth;
 
-import com.groom.cookiehouse.controller.response.auth.TokenResponseDto;
+import com.groom.cookiehouse.controller.dto.response.auth.TokenResponseDto;
 import com.groom.cookiehouse.oauth2.userInfo.OAuth2UserInfo;
 import com.groom.cookiehouse.config.jwt.JwtService;
-import com.groom.cookiehouse.controller.response.auth.SignInResponseDto;
+import com.groom.cookiehouse.controller.dto.response.auth.SignInResponseDto;
 import com.groom.cookiehouse.domain.user.SocialType;
 import com.groom.cookiehouse.domain.user.User;
 import com.groom.cookiehouse.exception.ErrorCode;

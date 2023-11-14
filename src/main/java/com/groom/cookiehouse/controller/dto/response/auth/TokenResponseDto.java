@@ -1,4 +1,4 @@
-package com.groom.cookiehouse.controller.response.auth;
+package com.groom.cookiehouse.controller.dto.response.auth;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
