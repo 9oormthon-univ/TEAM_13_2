@@ -2,8 +2,8 @@ package com.groom.cookiehouse.controller;
 
 import com.groom.cookiehouse.common.dto.BaseResponse;
 import com.groom.cookiehouse.config.resolver.UserId;
-import com.groom.cookiehouse.controller.response.auth.SignInResponseDto;
-import com.groom.cookiehouse.controller.response.auth.TokenResponseDto;
+import com.groom.cookiehouse.controller.dto.response.auth.SignInResponseDto;
+import com.groom.cookiehouse.controller.dto.response.auth.TokenResponseDto;
 import com.groom.cookiehouse.exception.SuccessCode;
 import com.groom.cookiehouse.oauth2.userInfo.OAuth2UserInfo;
 import com.groom.cookiehouse.service.auth.AuthService;
@@ -36,7 +36,7 @@ public class AuthController {
     }
 
     @PostMapping("/sign-out")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public BaseResponse signOut(@UserId Long userId) {
         authService.signOut(userId);
         return BaseResponse.success(SuccessCode.SIGNOUT_SUCCESS);
