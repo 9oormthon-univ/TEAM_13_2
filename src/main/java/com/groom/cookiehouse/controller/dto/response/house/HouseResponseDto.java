@@ -13,11 +13,11 @@ import java.util.List;
 public class HouseResponseDto {
 
     private Long icingId;
-    private List<Long> cookieId;
+    private List<Long> cookieIds;
     private String houseName;
 
-    public static HouseResponseDto of(Long icingId, List<Long> cookieId, String houseName) {
-        return new HouseResponseDto(icingId, cookieId, houseName);
+    public static HouseResponseDto of(Long icingId, List<Long> cookieIds, String houseName) {
+        return new HouseResponseDto(icingId, cookieIds, houseName);
     }
 
 }
