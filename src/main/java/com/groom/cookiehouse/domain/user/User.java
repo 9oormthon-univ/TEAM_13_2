@@ -1,16 +1,17 @@
 package com.groom.cookiehouse.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.groom.cookiehouse.domain.BaseEntity;
+import com.groom.cookiehouse.domain.cookie.CookieSelection;
+import com.groom.cookiehouse.domain.icing.IcingSelection;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -33,6 +34,14 @@ public class User extends BaseEntity {
 
     @Column(nullable = true)
     private String houseName;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    List<IcingSelection> icingSelections;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    List<CookieSelection> cookieSelections;
 
     @Builder
     public User(String userName, String socialId, SocialType socialType) {

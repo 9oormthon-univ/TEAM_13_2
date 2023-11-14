@@ -68,8 +68,6 @@ public class AuthService {
 
     @Transactional
     public void signOut(Long userId) {
-        System.out.println("여기입니다~~~");
-        System.out.println(userId);
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_USER_EXCEPTION, ErrorCode.NOT_FOUND_USER_EXCEPTION.getMessage()));
         user.updateRefreshToken(null);

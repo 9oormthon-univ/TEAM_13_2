@@ -1,5 +1,6 @@
 package com.groom.cookiehouse.service.house;
 
+import com.groom.cookiehouse.controller.dto.response.house.HouseResponseDto;
 import com.groom.cookiehouse.domain.cookie.Cookie;
 import com.groom.cookiehouse.domain.cookie.CookieSelection;
 import com.groom.cookiehouse.domain.icing.Icing;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -65,9 +67,32 @@ public class HouseService {
                         .icing(icing)
                         .build()
         );
-
         user.updateHouseName(houseName);
+    }
 
+    public HouseResponseDto getHouse(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_USER_EXCEPTION, ErrorCode.NOT_FOUND_USER_EXCEPTION.getMessage()));
+
+        List<IcingSelection> icingSelections = user.getIcingSelections();
+        List<CookieSelection> cookieSelections = user.getCookieSelections();
+
+        List<Long> cookieIds = new ArrayList<>();
+        if (!cookieSelections.isEmpty()) {
+            for (CookieSelection cookieSelection : cookieSelections) {
+                cookieIds.add(cookieSelection.getCookie().getId());
+            }
+        }
+        Long icingId = null;
+        if (!icingSelections.isEmpty()) {
+            icingId = icingSelections.get(0).getIcing().getId();
+        }
+
+        return HouseResponseDto.of(
+                icingId,
+                cookieIds,
+                user.getHouseName()
+        );
     }
 
 }
