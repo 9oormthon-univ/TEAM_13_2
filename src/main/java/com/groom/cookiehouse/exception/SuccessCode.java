@@ -11,9 +11,9 @@ public enum SuccessCode {
     /**
      * 200 OK
      */
-    GET_SUCCESS(HttpStatus.OK, "조회 성공"),
-
-    RE_ISSUE_TOKEN_SUCCESS(HttpStatus.OK, "토큰 재발급 성공"),
+    GET_SUCCESS(HttpStatus.OK, "성공적으로 조회했습니다."),
+    GET_HOUSE_SUCCESS(HttpStatus.OK, "집을 성공적으로 조회했습니다."),
+    RE_ISSUE_TOKEN_SUCCESS(HttpStatus.OK, "토큰 재발급을 성공했습니다"),
 
     /**
      * 201 CREATED
