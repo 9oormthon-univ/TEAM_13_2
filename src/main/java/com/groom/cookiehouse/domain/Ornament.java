@@ -1,21 +1,24 @@
 package com.groom.cookiehouse.domain;
 
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-
-public class Ornament {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "ORNAMENT")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Ornament extends BaseEntity {
 
     @Column
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="guest_book_id")
-    private GuestBook guestBook;
+    @Builder
+    public Ornament(String name) {
+        this.name = name;
+    }
+
 }

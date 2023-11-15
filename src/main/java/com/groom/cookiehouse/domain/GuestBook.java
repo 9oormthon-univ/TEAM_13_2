@@ -1,22 +1,15 @@
 package com.groom.cookiehouse.domain;
 
 import com.groom.cookiehouse.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class GuestBook {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "GUEST_BOOK")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class GuestBook extends BaseEntity{
 
     @Column
     private String author;
@@ -32,5 +25,11 @@ public class GuestBook {
     @JoinColumn(name="ornament_id")
     private Ornament ornament;
 
-
+    @Builder
+    public GuestBook(String author, String content, User user, Ornament ornament) {
+        this.author = author;
+        this.content = content;
+        this.user = user;
+        this.ornament = ornament;
+    }
 }

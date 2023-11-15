@@ -1,31 +1,38 @@
 package com.groom.cookiehouse.controller;
 
 import com.groom.cookiehouse.common.dto.BaseResponse;
+import com.groom.cookiehouse.controller.dto.response.guestBook.GetAllGuestBookResponseDto;
 import com.groom.cookiehouse.domain.GuestBook;
-import com.groom.cookiehouse.dto.GuestBookRequestDto;
-import com.groom.cookiehouse.dto.GuestBookResponseDto;
-import com.groom.cookiehouse.service.GuestBookService;
+import com.groom.cookiehouse.controller.dto.request.guestBook.GuestBookRequestDto;
+import com.groom.cookiehouse.controller.dto.response.guestBook.GuestBookResponseDto;
+import com.groom.cookiehouse.exception.SuccessCode;
+import com.groom.cookiehouse.service.guestBook.GuestBookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/guestBook")
+@RequestMapping("/guest-book")
 public class GuestBookController {
-    @Autowired
+
     private final GuestBookService guestBookService;
 
-    @PostMapping("")
-    public BaseResponse<GuestBookResponseDto> addGuestBook(@RequestBody GuestBookRequestDto guestBookRequestDto){
-        return BaseResponse.ok(guestBookService.addGuestBook(guestBookRequestDto));
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public BaseResponse addGuestBook(@RequestBody @Valid GuestBookRequestDto guestBookRequestDto){
+        guestBookService.addGuestBook(guestBookRequestDto);
+        return BaseResponse.success(SuccessCode.GUESTBOOK_CREATE_SUCCESS);
     }
 
-    @GetMapping("/all")
-    public BaseResponse<List<GuestBook>> getAllGuestBookList(){
-        return BaseResponse.ok(guestBookService.getAllGuestBook());
+    @GetMapping("/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public BaseResponse<GetAllGuestBookResponseDto> getAllGuestBookList(@PathVariable Long userId){
+        final GetAllGuestBookResponseDto data = guestBookService.getAllGuestBook(userId);
+        return BaseResponse.success(SuccessCode.GET_ALL_GUESTBOOK_SUCCESS, data);
     }
 
 

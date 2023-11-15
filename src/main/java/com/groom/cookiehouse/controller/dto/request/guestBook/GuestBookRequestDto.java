@@ -1,4 +1,4 @@
-package com.groom.cookiehouse.dto;
+package com.groom.cookiehouse.controller.dto.request.guestBook;
 
 import com.groom.cookiehouse.domain.GuestBook;
 import com.groom.cookiehouse.domain.Ornament;
@@ -7,20 +7,21 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Builder
 @Setter
 public class GuestBookRequestDto {
-    private long userId;
+
+    @NotNull
+    private Long userId;
+    @NotBlank
     private String author;
-    private long ornamentId;
+    @NotNull
+    private Long ornamentId;
+    @NotBlank
     private String content;
 
-
-    public GuestBook toEntity(User user, Ornament ornament){
-        return GuestBook.builder()
-                .author(this.author)
-                .content(this.content)
-                .build();
-    }
 }

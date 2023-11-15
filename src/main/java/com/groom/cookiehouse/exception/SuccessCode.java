@@ -15,6 +15,7 @@ public enum SuccessCode {
     GET_HOUSE_SUCCESS(HttpStatus.OK, "집을 성공적으로 조회했습니다."),
     GET_MISSION_SUCCESS(HttpStatus.OK, "미션을 성공적으로 조회했습니다."),
     RE_ISSUE_TOKEN_SUCCESS(HttpStatus.OK, "토큰 재발급을 성공했습니다"),
+    GET_ALL_GUESTBOOK_SUCCESS(HttpStatus.OK, "방명록 조회에 성공했습니다"),
 
     /**
      * 201 CREATED
@@ -24,7 +25,8 @@ public enum SuccessCode {
     SIGNOUT_SUCCESS(HttpStatus.CREATED, "로그아웃이 완료됐습니다."),
     HOUSE_CREATED_SUCCESS(HttpStatus.CREATED, "집이 완성되었습니다"),
     MISSION_COMPLETE_CREATED_SUCCESS(HttpStatus.CREATED, "미션을 성공적으로 수행하였습니다"),
-    MISSION_COMPLETE_UPDATED_SUCCESS(HttpStatus.CREATED, "미션을 성공적으로 수정하였습니다.")
+    MISSION_COMPLETE_UPDATED_SUCCESS(HttpStatus.CREATED, "미션을 성공적으로 수정하였습니다."),
+    GUESTBOOK_CREATE_SUCCESS(HttpStatus.CREATED, "방명록을 성공적으로 등록하였습니다.")
     ;
 
 
