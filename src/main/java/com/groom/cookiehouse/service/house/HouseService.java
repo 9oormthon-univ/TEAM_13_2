@@ -28,7 +28,7 @@ public class HouseService {
     private final IcingSelectionRepository icingSelectionRepository;
 
     @PostConstruct
-    public void initData() {
+    private void initData() {
         String[] cookieNames = {"하트", "머랭", "크래커", "눈꽃", "후렌치파이", "프레첼"};
         String[] icingNames = {"아이싱1", "아이싱2", "아이싱3", "아이싱4", "아이싱5", "아이싱6"};
         for (String cookieName : cookieNames) {
