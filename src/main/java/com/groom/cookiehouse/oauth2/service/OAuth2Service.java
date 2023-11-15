@@ -115,7 +115,6 @@ public class OAuth2Service {
 
         ResponseEntity<String> entity = null;
         try {
-            System.out.println("여기7");
             entity = restTemplate.exchange(clientRegistration.getProviderDetails().getUserInfoUri(), HttpMethod.GET, httpEntity, String.class);
         } catch (HttpStatusCodeException exception) {
             throw new BadRequestException(ErrorCode.REQUEST_VALIDATION_EXCEPTION, ErrorCode.REQUEST_VALIDATION_EXCEPTION.getMessage());
