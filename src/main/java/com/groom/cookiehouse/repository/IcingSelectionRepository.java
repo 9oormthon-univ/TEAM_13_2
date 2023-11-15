@@ -10,6 +10,4 @@ import java.util.List;
 @Repository
 public interface IcingSelectionRepository extends JpaRepository<IcingSelection, Long> {
 
-    List<IcingSelection> findAllByUser(User user);
-
 }
