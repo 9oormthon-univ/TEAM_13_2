@@ -2,6 +2,8 @@ package com.groom.cookiehouse.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.groom.cookiehouse.domain.BaseEntity;
+import com.groom.cookiehouse.domain.GuestBook;
+import lombok.*;
 import com.groom.cookiehouse.domain.cookie.CookieSelection;
 import com.groom.cookiehouse.domain.icing.IcingSelection;
 import lombok.AccessLevel;
@@ -17,6 +19,7 @@ import java.util.List;
 @Getter
 @DynamicInsert // null값이 아닌 필드만을 대상으로 SQL INSERT 문을 생성
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class User extends BaseEntity {
 
     @Column(nullable = false)
@@ -32,6 +35,10 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
 
+
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    private List<GuestBook> guestBookList;
+  
     @Column(nullable = true)
     private String houseName;
 
