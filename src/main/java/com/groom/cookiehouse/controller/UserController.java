@@ -22,7 +22,6 @@ public class UserController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public BaseResponse<UserResponseDto> getUser(@UserId Long userId) {
-        System.out.println("여기1");
         final UserResponseDto data = userService.getUser(userId);
         return BaseResponse.success(SuccessCode.GET_USER_INFO_SUCCESS, data);
     }
