@@ -43,7 +43,6 @@ public class OAuth2Service {
                 .queryParam("state", state) // csrf 공격으로부터 로그인 요청을 보호
                 .queryParam("redirect_uri", clientRegistration.getRedirectUri())
                 .build().encode(StandardCharsets.UTF_8).toUriString();
-        System.out.println("여기2");
         response.sendRedirect(authorizationUri);
     }
 
@@ -74,36 +73,6 @@ public class OAuth2Service {
         LocalDateTime expiredAt = LocalDateTime.now().plusSeconds(jsonObj.get("expires_in").getAsLong());
         return new OAuth2Token(accessToken, expiredAt);
     }
-
-//    protected OAuth2Token refreshOAuth2Token(ClientRegistration clientRegistration, OAuth2Token token) {
-//
-//        if (LocalDateTime.now().isBefore(token.getExpiredAt())) return token;
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-//
-//        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-//        params.add("client_id", clientRegistration.getClientId());
-//        params.add("client_secret", clientRegistration.getClientSecret());
-//        params.add("grant_type", "refresh_token");
-//        params.add("refresh_token", token.getRefreshToken());
-//
-//        HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, headers);
-//
-//        ResponseEntity<String> entity = null;
-//        try {
-//            entity = restTemplate.exchange(clientRegistration.getProviderDetails().getTokenUri(), HttpMethod.POST, httpEntity, String.class);
-//        } catch (HttpStatusCodeException exception) {
-//            throw new BadRequestException(ErrorCode.REQUEST_VALIDATION_EXCEPTION, ErrorCode.REQUEST_VALIDATION_EXCEPTION.getMessage());
-//        }
-//
-//        JsonObject jsonObj = JsonUtils.parse(entity.getBody()).getAsJsonObject();
-//        String accessToken = jsonObj.get("access_token").getAsString();
-//        String newRefreshToken = jsonObj.get("refresh_token").getAsString();
-//        LocalDateTime expiredAt = LocalDateTime.now().plusSeconds(jsonObj.get("expires_in").getAsLong());
-//
-//        return new OAuth2Token(accessToken, newRefreshToken, expiredAt);
-//    }
 
     public OAuth2UserInfo getUserInfo(ClientRegistration clientRegistration, String accessToken) {
         HttpHeaders headers = new HttpHeaders();

@@ -1,7 +1,5 @@
 package com.groom.cookiehouse.controller.dto.request.guestBook;
 
-import com.groom.cookiehouse.domain.GuestBook;
-import com.groom.cookiehouse.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

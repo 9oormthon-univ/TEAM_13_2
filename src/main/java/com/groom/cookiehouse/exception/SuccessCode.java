@@ -16,6 +16,9 @@ public enum SuccessCode {
     GET_MISSION_SUCCESS(HttpStatus.OK, "미션을 성공적으로 조회했습니다."),
     RE_ISSUE_TOKEN_SUCCESS(HttpStatus.OK, "토큰 재발급을 성공했습니다"),
     GET_ALL_GUESTBOOK_SUCCESS(HttpStatus.OK, "방명록 조회에 성공했습니다"),
+    GET_MISSION_COMPLETE_SUCCESS(HttpStatus.OK, "미션 수행 내역을 조회했습니다"),
+    GET_ALL_MISSON_COMPLETE_SUCCESS(HttpStatus.OK, "미션 수행 내역을 모두 조회했습니다"),
+    GET_USER_INFO_SUCCESS(HttpStatus.OK, "사용자 정보 조회에 성공했습니다"),
 
     /**
      * 201 CREATED

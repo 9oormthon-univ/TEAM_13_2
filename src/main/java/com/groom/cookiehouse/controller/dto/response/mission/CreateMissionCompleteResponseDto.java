@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class MissionCompleteResponseDto {
+public class CreateMissionCompleteResponseDto {
 
     private Long missionCompleteId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public static MissionCompleteResponseDto of(Long missionCompleteId, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        return new MissionCompleteResponseDto(missionCompleteId, createdAt, updatedAt);
+    public static CreateMissionCompleteResponseDto of(Long missionCompleteId, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        return new CreateMissionCompleteResponseDto(missionCompleteId, createdAt, updatedAt);
     }
 
 }

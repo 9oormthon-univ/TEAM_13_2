@@ -9,12 +9,16 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ErrorCode {
 
+    /**
+     * 404 BAD REQUEST
+     * */
     REQUEST_VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 요청입니다"),
     VALIDATION_REQUEST_MISSING_EXCEPTION(HttpStatus.BAD_REQUEST, "요청값이 입력되지 않았습니다."),
     VALIDATION_REQUEST_HEADER_MISSING_EXCEPTION(HttpStatus.BAD_REQUEST, "요청 헤더값이 입력되지 않았습니다."),
     VALIDATION_REQUEST_PARAMETER_MISSING_EXCEPTION(HttpStatus.BAD_REQUEST, "요청 파라미터값이 입력되지 않았습니다."),
     REQUEST_METHOD_VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "요청 메소드가 잘못됐습니다."),
     MAX_UPLOAD_SIZE_EXCEED_EXCEPTION(HttpStatus.PAYLOAD_TOO_LARGE, "파일 용량 초과"),
+    ALREADY_MISSION_COMPLETE(HttpStatus.BAD_REQUEST, "이미 미션을 수행하였습니다"),
 
     /**
      * 404 NOT FOUND
@@ -25,6 +29,7 @@ public enum ErrorCode {
     NOT_FOUND_IMAGE_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 이미지입니다."),
     NOT_FOUND_MISSION_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 날짜의 미션입니다."),
     NOT_FOUND_FURNITURE_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 가구입니다."),
+    NOT_FOUND_MISSION_COMPLETE_EXCEPTION(HttpStatus.NOT_FOUND, "존재하지 않는 미션 수행입니다"),
 
     /**
      * 401 UNAUTHORIZED
