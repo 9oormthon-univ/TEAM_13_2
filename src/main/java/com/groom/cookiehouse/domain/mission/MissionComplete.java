@@ -1,7 +1,6 @@
 package com.groom.cookiehouse.domain.mission;
 
 import com.groom.cookiehouse.domain.BaseEntity;
-import com.groom.cookiehouse.domain.furniture.Furniture;
 import com.groom.cookiehouse.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -22,6 +21,9 @@ public class MissionComplete extends BaseEntity {
     @Column(length = 500, nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private Long furnitureId;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -30,16 +32,12 @@ public class MissionComplete extends BaseEntity {
     @JoinColumn(name = "missionId")
     private Mission mission;
 
-    @ManyToOne
-    @JoinColumn(name = "furnitureId")
-    private Furniture furniture;
-
     @Builder
-    public MissionComplete(String image, String content, User user, Mission mission, Furniture furniture) {
+    public MissionComplete(String image, String content, Long furnitureId, User user, Mission mission) {
         this.image = image;
         this.content = content;
+        this.furnitureId = furnitureId;
         this.user = user;
         this.mission = mission;
-        this.furniture = furniture;
     }
 }

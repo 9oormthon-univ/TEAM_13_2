@@ -66,8 +66,7 @@ public class OAuth2Controller {
         OAuth2Token oAuth2Token = oAuth2Service.getAccessToken(clientRegistration, oAuth2AuthorizationResponse.getCode(), oAuth2AuthorizationResponse.getState());
         OAuth2UserInfo oAuth2UserInfo = oAuth2Service.getUserInfo(clientRegistration, oAuth2Token.getToken());
         httpSession.setAttribute("oAuth2UserInfo", oAuth2UserInfo);
-        response.sendRedirect("http://localhost:8080/auth");
-
+//        response.sendRedirect("http://localhost:8080/auth");
     }
 
     private void redirectWithErrorMessage(String uri, String message, HttpServletResponse response) throws IOException {

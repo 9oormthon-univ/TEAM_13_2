@@ -1,11 +1,9 @@
 package com.groom.cookiehouse.service.mission;
 
 import com.groom.cookiehouse.controller.dto.response.mission.MissionResponseDto;
-import com.groom.cookiehouse.domain.furniture.Furniture;
 import com.groom.cookiehouse.domain.mission.Mission;
 import com.groom.cookiehouse.exception.ErrorCode;
 import com.groom.cookiehouse.exception.model.NotFoundException;
-import com.groom.cookiehouse.repository.FurnitureRepository;
 import com.groom.cookiehouse.repository.MissionRepository;
 import com.groom.cookiehouse.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +20,6 @@ import java.util.List;
 public class MissionService {
 
     private final MissionRepository missionRepository;
-    private final FurnitureRepository furnitureRepository;
     private final UserRepository userRepository;
 
     @PostConstruct
@@ -88,38 +85,16 @@ public class MissionService {
         }
     }
 
-    @PostConstruct
-    private void initFurnitures() {
-        List<Mission> missions = missionRepository.findAll();
-        for (int i = 0; i < missions.size(); i++) {
-            for (int j = 1; j <= 4; j++) {
-                String name = "미션" + (i+1) + " 가구" + j;
-                Furniture furniture = Furniture.builder()
-                        .name(name)
-                        .mission(missions.get(i))
-                        .build();
-                furnitureRepository.save(furniture);
-            }
-        }
-    }
-
     public MissionResponseDto getTodayMission(Long userId) {
         userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_USER_EXCEPTION, ErrorCode.NOT_FOUND_USER_EXCEPTION.getMessage()));
         Mission mission = missionRepository.findByDate(LocalDate.now())
                 .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_MISSION_EXCEPTION, ErrorCode.NOT_FOUND_MISSION_EXCEPTION.getMessage()));
 
-        List<Long> furnitureIds = new ArrayList<>();
-        for (Furniture furniture : mission.getFurnitures()) {
-            furnitureIds.add(furniture.getId());
-            System.out.println(furniture.getId());
-        }
-
         return MissionResponseDto.of(
                 mission.getId(),
                 mission.getDate(),
-                mission.getMessage(),
-                furnitureIds
+                mission.getMessage()
         );
     }
 

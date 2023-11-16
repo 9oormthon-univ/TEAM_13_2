@@ -21,15 +21,14 @@ public class GuestBook extends BaseEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name="ornament_id")
-    private Ornament ornament;
+    @Column
+    private Long ornamentId;
 
     @Builder
-    public GuestBook(String author, String content, User user, Ornament ornament) {
+    public GuestBook(String author, String content, User user, Long ornamentId) {
         this.author = author;
         this.content = content;
         this.user = user;
-        this.ornament = ornament;
+        this.ornamentId = ornamentId;
     }
 }
