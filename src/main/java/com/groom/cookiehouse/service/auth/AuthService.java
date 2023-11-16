@@ -1,6 +1,10 @@
 package com.groom.cookiehouse.service.auth;
 
 import com.groom.cookiehouse.controller.dto.response.auth.TokenResponseDto;
+import com.groom.cookiehouse.oauth2.ClientRegistration;
+import com.groom.cookiehouse.oauth2.ClientRegistrationRepository;
+import com.groom.cookiehouse.oauth2.OAuth2Token;
+import com.groom.cookiehouse.oauth2.service.OAuth2Service;
 import com.groom.cookiehouse.oauth2.userInfo.OAuth2UserInfo;
 import com.groom.cookiehouse.config.jwt.JwtService;
 import com.groom.cookiehouse.controller.dto.response.auth.SignInResponseDto;
@@ -12,6 +16,7 @@ import com.groom.cookiehouse.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +28,16 @@ public class AuthService {
     private final Long TOKEN_EXPIRATION_TIME_REFRESH = 200 * 24 * 60 * 60 * 1000L; // 200일
 
     private final UserRepository userRepository;
+    private final ClientRegistrationRepository clientRegistrationRepository;
+    public final RestTemplate restTemplate;
+
+    public SignInResponseDto login(String code, String provider, String state) {
+        ClientRegistration clientRegistration = clientRegistrationRepository.findByRegistrationId(provider);
+        OAuth2Service oAuth2Service = new OAuth2Service(restTemplate);
+        OAuth2Token oAuth2Token = oAuth2Service.getAccessToken(clientRegistration, code, state);
+        OAuth2UserInfo oAuth2UserInfo = oAuth2Service.getUserInfo(clientRegistration, oAuth2Token.getToken());
+        return signIn(oAuth2UserInfo, provider);
+    }
 
     @Transactional
     public SignInResponseDto signIn(OAuth2UserInfo oAuth2UserInfo, String provider) {

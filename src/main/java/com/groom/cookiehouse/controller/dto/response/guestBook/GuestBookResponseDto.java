@@ -16,7 +16,7 @@ public class GuestBookResponseDto {
         return GuestBookResponseDto.builder()
                 .userId(guestBook.getId())
                 .author(guestBook.getAuthor())
-                .ornamentId(guestBook.getOrnament().getId())
+                .ornamentId(guestBook.getOrnamentId())
                 .content(guestBook.getContent())
                 .build();
     }

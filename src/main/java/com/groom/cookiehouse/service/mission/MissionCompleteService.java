@@ -2,13 +2,11 @@ package com.groom.cookiehouse.service.mission;
 
 import com.groom.cookiehouse.controller.dto.request.mission.MissionCompleteRequestDto;
 import com.groom.cookiehouse.controller.dto.response.mission.MissionCompleteResponseDto;
-import com.groom.cookiehouse.domain.furniture.Furniture;
 import com.groom.cookiehouse.domain.mission.Mission;
 import com.groom.cookiehouse.domain.mission.MissionComplete;
 import com.groom.cookiehouse.domain.user.User;
 import com.groom.cookiehouse.exception.ErrorCode;
 import com.groom.cookiehouse.exception.model.NotFoundException;
-import com.groom.cookiehouse.repository.FurnitureRepository;
 import com.groom.cookiehouse.repository.MissionCompleteRepository;
 import com.groom.cookiehouse.repository.MissionRepository;
 import com.groom.cookiehouse.repository.UserRepository;
@@ -24,7 +22,6 @@ public class MissionCompleteService {
 
     private final UserRepository userRepository;
     private final MissionRepository missionRepository;
-    private final FurnitureRepository furnitureRepository;
     private final MissionCompleteRepository missionCompleteRepository;
 
     @Transactional
@@ -33,15 +30,13 @@ public class MissionCompleteService {
                 .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_USER_EXCEPTION, ErrorCode.NOT_FOUND_USER_EXCEPTION.getMessage()));
         Mission mission = missionRepository.findByDate(LocalDate.now())
                 .orElseThrow(() ->new NotFoundException(ErrorCode.NOT_FOUND_MISSION_EXCEPTION, ErrorCode.NOT_FOUND_MISSION_EXCEPTION.getMessage()));
-        Furniture furniture = furnitureRepository.findById(requestDto.getFurnitureId())
-                .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND_FURNITURE_EXCEPTION, ErrorCode.NOT_FOUND_FURNITURE_EXCEPTION.getMessage()));
 
         MissionComplete missionComplete = MissionComplete.builder()
                 .image(imageUrl)
                 .content(requestDto.getMissionCompleteContent())
                 .mission(mission)
                 .user(user)
-                .furniture(furniture)
+                .furnitureId(requestDto.getFurnitureId())
                 .build();
         missionCompleteRepository.save(missionComplete);
 

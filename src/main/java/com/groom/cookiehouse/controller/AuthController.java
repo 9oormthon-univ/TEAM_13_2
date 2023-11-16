@@ -21,6 +21,12 @@ public class AuthController {
     private final AuthService authService;
     private final HttpSession httpSession;
 
+    @GetMapping("/{provider}")
+    @ResponseStatus(HttpStatus.OK)
+    public BaseResponse<SignInResponseDto> login(@PathVariable String provider, @RequestParam String code, @RequestParam String state) {
+        return BaseResponse.success(SuccessCode.LOGIN_SUCCESS, authService.login(code, provider, state));
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public BaseResponse<SignInResponseDto> signIn() {

@@ -1,6 +1,5 @@
 package com.groom.cookiehouse.controller.dto.response.mission;
 
-import com.groom.cookiehouse.domain.furniture.Furniture;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,10 +16,9 @@ public class MissionResponseDto {
     private Long missionId;
     private LocalDate missionDate;
     private String missionMessage;
-    private List<Long> todayFurnitureIds;
 
-    public static MissionResponseDto of(Long missionId, LocalDate missionDate, String missionMessage, List<Long> todayFurnitureIds) {
-        return new MissionResponseDto(missionId, missionDate, missionMessage, todayFurnitureIds);
+    public static MissionResponseDto of(Long missionId, LocalDate missionDate, String missionMessage) {
+        return new MissionResponseDto(missionId, missionDate, missionMessage);
     }
 
 }
