@@ -40,4 +40,10 @@ public class MissionComplete extends BaseEntity {
         this.user = user;
         this.mission = mission;
     }
+
+    public void update(String image, String content, Long furnitureId) {
+        this.image = image;
+        this.content = content;
+        this.furnitureId = furnitureId;
+    }
 }
