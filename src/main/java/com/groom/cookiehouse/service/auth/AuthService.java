@@ -61,9 +61,11 @@ public class AuthService {
 
         String accessToken = jwtService.issuedToken(String.valueOf(user.getId()), TOKEN_EXPIRATION_TIME_ACCESS);
         String refreshToken = jwtService.issuedToken(String.valueOf(user.getId()), TOKEN_EXPIRATION_TIME_REFRESH);
-
+        System.out.println("리프레쉬 발급");
         user.updateRefreshToken(refreshToken);
-
+        System.out.println("리프레쉬 저장");
+        System.out.println(user.getRefreshToken());
+        userRepository.save(user);
         return SignInResponseDto.of(user.getId(), user.getUserName(), accessToken, refreshToken, isRegistered);
     }
 
@@ -78,6 +80,7 @@ public class AuthService {
         String newRefreshToken = jwtService.issuedToken(String.valueOf(user.getId()), TOKEN_EXPIRATION_TIME_REFRESH);
 
         user.updateRefreshToken(newRefreshToken);
+        userRepository.save(user);
         return TokenResponseDto.of(newAccessToken, newRefreshToken);
     }
 

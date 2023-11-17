@@ -2,9 +2,7 @@ package com.groom.cookiehouse.controller;
 
 import com.groom.cookiehouse.common.dto.BaseResponse;
 import com.groom.cookiehouse.controller.dto.response.guestBook.GetAllGuestBookResponseDto;
-import com.groom.cookiehouse.domain.GuestBook;
 import com.groom.cookiehouse.controller.dto.request.guestBook.GuestBookRequestDto;
-import com.groom.cookiehouse.controller.dto.response.guestBook.GuestBookResponseDto;
 import com.groom.cookiehouse.exception.SuccessCode;
 import com.groom.cookiehouse.service.guestBook.GuestBookService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
