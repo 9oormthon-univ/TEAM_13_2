@@ -105,7 +105,15 @@ public class S3Service {
 
     // 이미지 삭제
     public void deleteFile(String imageUrl) {
-        String imageKey = imageUrl.substring(49);
-        amazonS3.deleteObject(bucket, imageKey);
+        try {
+            String imageKey = imageUrl.substring(49);
+            amazonS3.deleteObject(bucket, imageKey);
+        } catch (AmazonServiceException e) {
+            log.error("AmazonServiceException: Error Message: " + e.getMessage());
+            log.error("HTTP Status Code: " + e.getStatusCode());
+            log.error("AWS Error Code: " + e.getErrorCode());
+            log.error("Error Type: " + e.getErrorType());
+            log.error("Request ID: " + e.getRequestId());
+        }
     }
 }
