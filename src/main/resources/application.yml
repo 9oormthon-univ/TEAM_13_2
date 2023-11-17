@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    url: jdbc:mysql://cookiehouse.c9ebrdortuwk.ap-northeast-2.rds.amazonaws.com/CookieHouse
+    username: cookiehouse
+    password: cookiehouse
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: false
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 276767484662-aljj73nidvpommji4df0049mjbpejbms.apps.googleusercontent.com
+            client-secret: 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
+            authorization-grant-type: authorization_code
+            redirect-uri: http://ec2-3-35-218-95.ap-northeast-2.compute.amazonaws.com:8080/login/oauth2/code/google
+            scope: profile
+          kakao:
+            client-id: 5ced7383a71259affc5c5352eb2355cf
+            client-secret: ntIC2KFNRL99mGhWEX1IH0m2RDVUYwta
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:5173/redirect
+            scope: profile_nickname
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://www.googleapis.com/oauth2/v4/token
+            user-info-uri: https://www.googleapis.com/oauth2/v2/userinfo
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+jwt:
+  secret: b96dfd4fefd8fbcdacf3beddba5139ee89f732223aeeca3156f9b7ffca220fc3
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAYIO75EVC2HVNKKW4
+      secret-key: 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
+    s3:
+      bucket: cookiehouse-image
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
