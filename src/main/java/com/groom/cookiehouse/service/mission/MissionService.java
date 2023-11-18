@@ -27,7 +27,7 @@ public class MissionService {
         // 미션 메세지 (수정 예정)
         if (missionRepository.findAll().size() == 0) {
             List<String> missionMessages = new ArrayList<>();
-            missionMessages.add("내가 가장 뜨거웠던 순간올리기");
+            missionMessages.add("구름톤에서 불태웠던 열정!");
             missionMessages.add("가족과 함께 찍은 행복한 순간올리기");
             missionMessages.add("가장 편안하게 나의 본 모습이 나오는 친구와 추억 올리기");
             missionMessages.add("티비보면서 뒹굴뒹굴했던 순간 올리기");

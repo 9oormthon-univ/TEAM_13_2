@@ -11,6 +11,7 @@ import com.groom.cookiehouse.exception.SuccessCode;
 import com.groom.cookiehouse.external.client.aws.S3Service;
 import com.groom.cookiehouse.service.mission.MissionCompleteService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ import java.util.List;
 
 //@CrossOrigin("http://127.0.0.1:5173")
 @RequiredArgsConstructor
+@Slf4j
 @RestController
 @RequestMapping("/mission-complete")
 public class MissionCompleteController {
