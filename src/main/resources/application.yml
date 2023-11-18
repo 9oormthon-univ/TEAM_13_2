@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://cookiehouse.c9ebrdortuwk.ap-northeast-2.rds.amazonaws.com/CookieHouse
+    url: jdbc:mysql://cookiehouse.c9ebrdortuwk.ap-northeast-2.rds.amazonaws.com/CookieHouse?useUnicode=yes&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Seoul
     username: cookiehouse
     password: cookiehouse
     driver-class-name: com.mysql.cj.jdbc.Driver
