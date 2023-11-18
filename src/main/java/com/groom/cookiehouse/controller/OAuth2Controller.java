@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-@CrossOrigin("http://127.0.0.1:5173")
+//@CrossOrigin("http://127.0.0.1:5173")
 @RestController
 @RequiredArgsConstructor
 public class OAuth2Controller {

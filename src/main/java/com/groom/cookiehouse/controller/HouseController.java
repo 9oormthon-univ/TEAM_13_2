@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@CrossOrigin("http://127.0.0.1:5173")
+//@CrossOrigin("http://127.0.0.1:5173")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/house")

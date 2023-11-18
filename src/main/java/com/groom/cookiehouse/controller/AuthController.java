@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
-@CrossOrigin("http://127.0.0.1:5173")
+//@CrossOrigin("http://127.0.0.1:5173")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/auth")

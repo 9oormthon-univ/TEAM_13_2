@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@CrossOrigin("http://127.0.0.1:5173")
+//@CrossOrigin("http://127.0.0.1:5173")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/mission-complete")
