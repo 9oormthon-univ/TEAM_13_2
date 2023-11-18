@@ -22,7 +22,7 @@ spring:
             client-id: 276767484662-aljj73nidvpommji4df0049mjbpejbms.apps.googleusercontent.com
             client-secret: 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
             authorization-grant-type: authorization_code
-            redirect-uri: http://ec2-3-35-218-95.ap-northeast-2.compute.amazonaws.com:8080/login/oauth2/code/google
+            redirect-uri: http://127.0.0.1:5173/redirect
             scope: profile
           kakao:
             client-id: 5ced7383a71259affc5c5352eb2355cf
@@ -52,4 +52,3 @@ cloud:
       static: ap-northeast-2
     stack:
       auto: false
-
