@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@CrossOrigin("http://127.0.0.1:5173")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/guest-book")
