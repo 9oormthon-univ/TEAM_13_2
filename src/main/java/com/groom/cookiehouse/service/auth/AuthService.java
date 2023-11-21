@@ -66,8 +66,8 @@ public class AuthService {
         System.out.println("리프레쉬 저장");
         System.out.println(user.getRefreshToken());
         userRepository.save(user);
-        Boolean isHouseBuilt = !user.getHouseName().isEmpty();
-        return SignInResponseDto.of(user.getId(), user.getUserName(), accessToken, refreshToken, isRegistered, isHouseBuilt);
+
+        return SignInResponseDto.of(user.getId(), user.getUserName(), accessToken, refreshToken, isRegistered);
     }
 
     @Transactional

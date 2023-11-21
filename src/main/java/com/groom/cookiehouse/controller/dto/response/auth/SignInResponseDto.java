@@ -14,9 +14,8 @@ public class SignInResponseDto {
     private String accessToken;
     private String refreshToken;
     private Boolean isRegistered;
-    private Boolean isHouseBuilt;
 
-    public static SignInResponseDto of(Long userId, String userName, String accessToken, String refreshToken, Boolean isRegistered, Boolean isHouseBuilt) {
-        return new SignInResponseDto(userId, userName, accessToken, refreshToken, isRegistered, isHouseBuilt);
+    public static SignInResponseDto of(Long userId, String userName, String accessToken, String refreshToken, Boolean isRegistered) {
+        return new SignInResponseDto(userId, userName, accessToken, refreshToken, isRegistered);
     }
 }
