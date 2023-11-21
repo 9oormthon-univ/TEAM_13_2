@@ -66,7 +66,10 @@ public class AuthService {
         System.out.println("리프레쉬 저장");
         System.out.println(user.getRefreshToken());
         userRepository.save(user);
-        Boolean isHouseBuilt = !user.getHouseName().isEmpty();
+        Boolean isHouseBuilt = true;
+	if (user.getHouseName() == null) {
+		isHouseBuilt = false;
+	}
         return SignInResponseDto.of(user.getId(), user.getUserName(), accessToken, refreshToken, isRegistered, isHouseBuilt);
     }
 
